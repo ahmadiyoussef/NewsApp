@@ -25,7 +25,7 @@ class SavedNewsFragment: Fragment(R.layout.fragment_saved_news) {
     lateinit var newsAdapter: NewsAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.i(TAG, "onViewCreated")
+
         super.onViewCreated(view, savedInstanceState)
 
 
@@ -90,7 +90,5 @@ class SavedNewsFragment: Fragment(R.layout.fragment_saved_news) {
         }
     }
 
-    companion object{
-        private const val TAG = "SavedNewsFragmentLog"
-    }
+
 }
