@@ -60,19 +60,19 @@ class SavedNewsFragment: Fragment(R.layout.fragment_saved_news) {
                 val position = viewHolder.adapterPosition
                 val article = newsAdapter.differ.currentList[position]
                 viewModel.deleteArticle(article)
-                Snackbar.make(view, "Successfully deleted article", Snackbar.LENGTH_LONG).apply {
-                    setAction("Undo"){
+
+                Snackbar.make(view, "Successfully deleted article", Snackbar.LENGTH_LONG)
+                    .setAction("Undo"){
                         viewModel.saveArticle(article)
                     }
-                    show()
-                }
-            }
+                    .show()
+
+                  }
 
         }
 
-        ItemTouchHelper(itemTouchHelperCallback).apply {
-            attachToRecyclerView(rvSavedNews)
-        }
+        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(rvSavedNews)
+
         viewModel.getSavedNews().observe(viewLifecycleOwner, Observer { articles ->
             newsAdapter.differ.submitList(articles)
 
@@ -84,10 +84,9 @@ class SavedNewsFragment: Fragment(R.layout.fragment_saved_news) {
 
     private fun setupRecyclerView(){
         newsAdapter = NewsAdapter()
-        rvSavedNews.apply {
-            adapter = newsAdapter
-            layoutManager = LinearLayoutManager(activity)
-        }
+        rvSavedNews.adapter = newsAdapter
+        rvSavedNews.layoutManager = LinearLayoutManager(activity)
+
     }
 
 
